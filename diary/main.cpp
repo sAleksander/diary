@@ -9,6 +9,28 @@
 using namespace std;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Menus
+void errorNote(string note)
+{
+	system("cls");
+	cout << "!!!!!!!!!!!!!!!" << endl << endl;
+	cout << note << endl << endl;;
+	cout << "!!!!!!!!!!!!!!!";
+	Sleep(2000);
+	system("cls");
+}
+
+
+int workSpace()
+{
+	while (true)
+	{
+
+	}
+
+	errorNote("something wron in a workspace");
+	return 0;
+}
+
 
 int loginUser()
 {
@@ -17,23 +39,28 @@ int loginUser()
 	string loginInFile;
 	string passwordInFile;
 
-	bool tick = true;
-
 	fstream loginFile;
 
 	loginFile.open("lp.txt", ios::in);
 	if (loginFile.good())
 	{
+		cout << "Type login : ";
+		cin >> login;
+		cout << "Type password : ";
+		cin >> password;
+		system("cls");
+
 		while (!loginFile.eof())
 		{
 			getline(loginFile, loginInFile);
 			getline(loginFile, passwordInFile);
 
+
 			if (loginInFile == login)
 			{
 				if (passwordInFile == password)
 				{
-					cout << "Loged in!";
+					cout << "Logged in!";
 					Sleep(1000);
 					system("cls");
 					return 0;
@@ -47,8 +74,14 @@ int loginUser()
 				}
 			}
 		}
+
+		cout << "Couldn`t find this user, try again";
+		Sleep(1000);
+		loginFile.close();
+		return 0;
 	}
 
+	errorNote("ls.txt read failure!");
 	return 0;
 }
 
@@ -63,7 +96,7 @@ void registration()
 	cin >> login;
 	cout << "Type your password : ";
 	cin >> password;
-	logPass << login << endl << password;
+	logPass << login << endl << password << endl;
 
 	logPass.close();
 	system("cls");
@@ -94,6 +127,12 @@ int mainMenu()
 		{
 			system("cls");
 			registration();
+		}
+
+		if (choice == 49)
+		{
+			system("cls");
+			loginUser();
 		}
 	}
 
