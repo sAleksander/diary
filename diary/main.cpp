@@ -35,6 +35,34 @@ void encripting(string pass,bool encode, string line)
 
 }
 
+int fileWrite()
+{
+	string fileName;
+	string content;
+	fstream fileToSave;
+
+	system("cls");
+	
+	cout << "File header : ";
+
+	cin >> fileName;
+
+	system("cls");
+
+	fileToSave.open(fileName + ".txt", ios::out);
+
+	cout << fileName << endl << endl;
+	
+	getline(cin, content);
+	getline(cin, content);
+
+	fileToSave << content;
+
+	fileToSave.close();
+	
+	return 0;
+}
+
 int fileRead()
 {
 	fstream fileToRead;
@@ -48,6 +76,16 @@ int fileRead()
 
 	if (fileToRead.good())
 	{
+		system("cls");
+		string line;
+		while (!fileToRead.eof())
+		{
+			getline(fileToRead, line);
+			cout << line << endl;
+		}
+
+		system("pause");
+
 		return 0;
 	}
 	else
@@ -83,12 +121,12 @@ int workspace()
 
 		else if (choice == 50)
 		{
-			return 0;
+			fileRead();
 		}
 
 		else if (choice == 49)
 		{
-			return 0;
+			fileWrite();
 		}
 
 	}

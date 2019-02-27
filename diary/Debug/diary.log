@@ -1,2 +1,5 @@
 ﻿  main.cpp
+c:\users\szulc\desktop\c++\diary\diary\main.cpp(15): warning C4018: '<': signed/unsigned mismatch
+c:\users\szulc\desktop\c++\diary\diary\main.cpp(22): warning C4018: '<': signed/unsigned mismatch
+c:\users\szulc\desktop\c++\diary\diary\main.cpp(30): warning C4018: '<': signed/unsigned mismatch
   diary.vcxproj -> C:\Users\szulc\Desktop\c++\diary\Debug\diary.exe
