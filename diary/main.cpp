@@ -2,34 +2,23 @@
 #include <string>
 #include <fstream>
 #include <conio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <Windows.h>
+#include "messages.h"
 
 using namespace std;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Menus
-void errorNote(string note)
-{
-	system("cls");
-	cout << "!!!!!!!!!!!!!!!" << endl << endl;
-	cout << note << endl << endl;;
-	cout << "!!!!!!!!!!!!!!!";
-	Sleep(2000);
-	system("cls");
-}
 
-
-int workSpace()
-{
-	while (true)
-	{
-
-	}
-
-	errorNote("something wron in a workspace");
-	return 0;
-}
+////
+////int workspace()
+////{
+////	while (true)
+////	{
+////
+////	}
+////
+////	errornote("something wron in a workspace");
+////	return 0;
+////}
 
 
 int loginUser()
@@ -60,23 +49,19 @@ int loginUser()
 			{
 				if (passwordInFile == password)
 				{
-					cout << "Logged in!";
-					Sleep(1000);
-					system("cls");
+					notification(1000, "Logged in!");
 					return 0;
 				}
 				else
 				{
-					cout << "Password incorrect!" << endl;
-					Sleep(1000);
-					system("cls");
+					notification(1000, "Password incorrect!");
 					return 0;
 				}
 			}
 		}
 
-		cout << "Couldn`t find this user, try again";
-		Sleep(1000);
+		notification(1000, "Couldn`t find this user, try again");
+
 		loginFile.close();
 		return 0;
 	}
@@ -99,10 +84,8 @@ void registration()
 	logPass << login << endl << password << endl;
 
 	logPass.close();
-	system("cls");
-	cout << "REGISTERED!";
-	Sleep(1000);
-	system("cls");
+
+	notification(1000, "REGISTERED!");
 }
 
 int mainMenu()
