@@ -8,17 +8,94 @@ using namespace std;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Menus
 
-////
-////int workspace()
-////{
-////	while (true)
-////	{
-////
-////	}
-////
-////	errornote("something wron in a workspace");
-////	return 0;
-////}
+void encripting(string pass,bool encode, string line)
+{
+	int key = 0;
+
+	for (int i = 0; i < pass.length(); i++)
+	{
+		key += pass[i];
+	}
+
+	if (encode == true)
+	{
+		for (int i = 0; i < line.length(); i++)
+		{
+			line[i] = line[i] + key;
+		}
+	}
+
+	else if (encode == false)
+	{
+		for (int i = 0; i < line.length(); i++)
+		{
+			line[i] = line[i] - key;
+		}
+	}
+
+}
+
+int fileRead()
+{
+	fstream fileToRead;
+	string fileName;
+	system("cls");
+	cout << "type file name : ";
+	cin >> fileName;
+	fileName = fileName + ".txt";
+
+	fileToRead.open(fileName, ios::in);
+
+	if (fileToRead.good())
+	{
+		return 0;
+	}
+	else
+	{
+		notification(2000, "Couldn`t find file");
+
+		return 0;
+	}
+
+}
+
+
+int workspace()
+{
+	int choice;
+
+	while (true)
+	{
+		system("cls");
+		choice = 0;
+		cout << "1. New file" << endl;
+		cout << "2. Read file" << endl;
+		cout << "3. Log out" << endl;
+		choice = _getch();
+
+
+		if (choice == 51)
+		{
+			notification(1000, "Succesfully logged out!");
+
+			return 0;
+		}
+
+		else if (choice == 50)
+		{
+			return 0;
+		}
+
+		else if (choice == 49)
+		{
+			return 0;
+		}
+
+	}
+
+	errorNote("something wron in a workspace");
+	return 0;
+}
 
 
 int loginUser()
@@ -50,6 +127,7 @@ int loginUser()
 				if (passwordInFile == password)
 				{
 					notification(1000, "Logged in!");
+					workspace();
 					return 0;
 				}
 				else
